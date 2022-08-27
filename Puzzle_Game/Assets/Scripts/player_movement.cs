@@ -27,11 +27,6 @@ public class player_movement : MonoBehaviour {
 
 	void Update () {
 
-		while (false)
-		{
-			rotationPeriod = 0.03f;
-		}
-
 		float x = 0;
 		float y = 0;
 
