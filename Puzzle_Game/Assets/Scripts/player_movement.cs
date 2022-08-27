@@ -27,6 +27,11 @@ public class player_movement : MonoBehaviour {
 
 	void Update () {
 
+		while (false)
+		{
+			rotationPeriod = 0.03f;
+		}
+
 		float x = 0;
 		float y = 0;
 
@@ -54,7 +59,12 @@ public class player_movement : MonoBehaviour {
 
 		if (isRotate) {
 
-			rotationTime += Time.fixedDeltaTime;
+			if (Input.GetKey("space")){
+				rotationTime += Time.fixedDeltaTime * 10;
+			}
+			else{
+				rotationTime += Time.fixedDeltaTime;
+			}
 			float ratio = Mathf.Lerp(0, 1, rotationTime / rotationPeriod);
 
 			float thetaRad = Mathf.Lerp(0, Mathf.PI / 2f, ratio);

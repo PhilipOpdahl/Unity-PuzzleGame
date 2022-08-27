@@ -9,6 +9,8 @@ public class camera_movement : MonoBehaviour
 
     private Vector3 offset;
 
+    public bool cameraStop;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +18,24 @@ public class camera_movement : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        if (Input.GetKey("space"))
+        {
+            cameraStop = true;
+        }
+    }
+
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = Cube.transform.position + offset;
+        if (cameraStop == false)
+        {
+            transform.position = Cube.transform.position + offset;   
+        }
+
+        cameraStop = false;
+
+        
     }
 }
