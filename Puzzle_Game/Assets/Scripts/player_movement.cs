@@ -12,6 +12,8 @@ public class player_movement : MonoBehaviour {
 	float directionX = 0;
 	float directionZ = 0;
 
+	bool dash = false;
+
 	float startAngleRad = 0;
 	Vector3 startPos;
 	float rotationTime = 0;
@@ -49,6 +51,7 @@ public class player_movement : MonoBehaviour {
 			setRadius();
 			rotationTime = 0;
 			isRotate = true;
+			dash = false;
 		}
 
 		else{
@@ -59,31 +62,55 @@ public class player_movement : MonoBehaviour {
 		}
 	}
 
-	void FixedUpdate() {
+	void FixedUpdate()
+	{
 
-		if (isRotate) {
+		if (isRotate)
+		{
 
-			rotationTime += Time.fixedDeltaTime;
+			if (Input.GetKey("space"))
+			{
+				dash = true;
+				if (Input.GetKey("right"))
+                {
+					startPos.z = startPos.z + 1;
+                }
+				if (Input.GetKey("down"))
+				{
+					startPos.x = startPos.x + 1;
+				}
+				if (Input.GetKey("left"))
+				{
+					startPos.z = startPos.z - 1;
+				}
+				if (Input.GetKey("up"))
+				{
+					startPos.x = startPos.x -1;
+				}
+				dash = false;
+			}
+			else if (dash == false)
+			{
+				rotationTime += (Time.fixedDeltaTime / 2);
+			}
+
 			float ratio = Mathf.Lerp(0, 1, rotationTime / rotationPeriod);
 
 			float thetaRad = Mathf.Lerp(0, Mathf.PI / 2f, ratio);
-			float distanceX = -directionX * radius * (Mathf.Cos (startAngleRad) - Mathf.Cos (startAngleRad + thetaRad));
-			float distanceY = radius * (Mathf.Sin(startAngleRad + thetaRad) - Mathf.Sin (startAngleRad));
-			float distanceZ = directionZ * radius * (Mathf.Cos (startAngleRad) - Mathf.Cos (startAngleRad + thetaRad));
+			float distanceX = -directionX * radius * (Mathf.Cos(startAngleRad) - Mathf.Cos(startAngleRad + thetaRad));
+			float distanceY = radius * (Mathf.Sin(startAngleRad + thetaRad) - Mathf.Sin(startAngleRad));
+			float distanceZ = directionZ * radius * (Mathf.Cos(startAngleRad) - Mathf.Cos(startAngleRad + thetaRad));
 			transform.position = new Vector3(startPos.x + distanceX, startPos.y + distanceY, startPos.z + distanceZ);
 
 			transform.rotation = Quaternion.Lerp(fromRotation, toRotation, ratio);
 
-			if (ratio == 1) {
+			if (ratio == 1)
+			{
 				isRotate = false;
 				directionX = 0;
 				directionZ = 0;
 				rotationTime = 0;
 			}
-		}
-
-		else{
-			
 		}
 	}
 
