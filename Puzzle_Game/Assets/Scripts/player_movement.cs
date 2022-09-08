@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System;
+
 
 public class player_movement : MonoBehaviour {
 
@@ -48,6 +50,13 @@ public class player_movement : MonoBehaviour {
 			rotationTime = 0;
 			isRotate = true;
 		}
+
+		else{
+			startPos.x = (float) Math.Round((double)startPos.x, 1);
+			startPos.y = (float) Math.Round((double)startPos.y, 1);
+			startPos.z = (float) Math.Round((double)startPos.z, 1);
+			//transform.position = new Vector3(startPos.x, startPos.y, startPos.z);
+		}
 	}
 
 	void FixedUpdate() {
@@ -71,6 +80,10 @@ public class player_movement : MonoBehaviour {
 				directionZ = 0;
 				rotationTime = 0;
 			}
+		}
+
+		else{
+			
 		}
 	}
 
