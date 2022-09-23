@@ -22,6 +22,8 @@ public class player_movement : MonoBehaviour
 	Quaternion fromRotation;
 	Quaternion toRotation;
 
+	bool rightLimit = false;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -47,7 +49,11 @@ public class player_movement : MonoBehaviour
 		if ((x != 0 || y != 0) && !isRotate)
 		{
 			directionX = y;
-			directionZ = x;
+            directionZ = x;
+			if (rightLimit == true && x > 0)
+            {
+				directionZ = 0;
+            }
 			startPos = transform.position;
 			fromRotation = transform.rotation;
 			transform.Rotate(directionZ * 90, 0, directionX * 90, Space.World);
@@ -118,6 +124,19 @@ public class player_movement : MonoBehaviour
 				rotationTime = 0;
 			}
 		}
+	}
+
+	void OnCollisionStay(Collision collisionInfo)
+	{
+		if (collisionInfo.collider.name == "Wall")
+		{
+			rightLimit = true;
+		}
+	}
+
+	void OnCollisionExit(Collision collisionInfo)
+	{
+		rightLimit = false;
 	}
 
 	void setRadius()
