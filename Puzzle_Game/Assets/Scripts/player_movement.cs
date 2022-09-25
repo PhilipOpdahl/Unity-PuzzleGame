@@ -96,7 +96,7 @@ public class player_movement : MonoBehaviour
 				{
 					startPos.x = startPos.x + 1;
 				}
-				if (Input.GetKey("left") && leftLimit)
+				if (Input.GetKey("left") && leftLimit == false)
 				{
 					startPos.z = startPos.z - 1;
 				}
@@ -133,11 +133,11 @@ public class player_movement : MonoBehaviour
 
 	void OnCollisionStay(Collision collisionInfo)
 	{
-		if (collisionInfo.collider.name == "WallRight")
+		if (collisionInfo.collider.tag == "WallRight")
 		{
 			rightLimit = true;
 		}
-		if (collisionInfo.collider.name == "WallLeft")
+		if (collisionInfo.collider.tag == "WallLeft")
 		{
 			leftLimit = true;
 		}
@@ -145,11 +145,11 @@ public class player_movement : MonoBehaviour
 
 	void OnCollisionExit(Collision collisionInfo)
 	{
-		if (collisionInfo.collider.name == "WallRight")
+		if (collisionInfo.collider.tag == "WallRight")
 		{
 			rightLimit = false;
 		}
-		if (collisionInfo.collider.name == "WallLeft")
+		if (collisionInfo.collider.tag == "WallLeft")
 		{
 			leftLimit = false;
 		}
