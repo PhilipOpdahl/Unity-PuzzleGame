@@ -23,6 +23,7 @@ public class player_movement : MonoBehaviour
 	Quaternion toRotation;
 
 	bool rightLimit = false;
+	bool leftLimit = false;
 
 	// Use this for initialization
 	void Start()
@@ -49,11 +50,15 @@ public class player_movement : MonoBehaviour
 		if ((x != 0 || y != 0) && !isRotate)
 		{
 			directionX = y;
-            directionZ = x;
+			directionZ = x;
 			if (rightLimit == true && x > 0)
-            {
+			{
 				directionZ = 0;
-            }
+			}
+			if (leftLimit == true && x < 0)
+			{
+				directionZ = 0;
+			}
 			startPos = transform.position;
 			fromRotation = transform.rotation;
 			transform.Rotate(directionZ * 90, 0, directionX * 90, Space.World);
@@ -83,7 +88,7 @@ public class player_movement : MonoBehaviour
 			if (Input.GetKey("space"))
 			{
 				dash = true;
-				if (Input.GetKey("right"))
+				if (Input.GetKey("right") && rightLimit == false)
 				{
 					startPos.z = startPos.z + 1;
 				}
@@ -91,7 +96,7 @@ public class player_movement : MonoBehaviour
 				{
 					startPos.x = startPos.x + 1;
 				}
-				if (Input.GetKey("left"))
+				if (Input.GetKey("left") && leftLimit)
 				{
 					startPos.z = startPos.z - 1;
 				}
@@ -128,15 +133,26 @@ public class player_movement : MonoBehaviour
 
 	void OnCollisionStay(Collision collisionInfo)
 	{
-		if (collisionInfo.collider.name == "Wall")
+		if (collisionInfo.collider.name == "WallRight")
 		{
 			rightLimit = true;
+		}
+		if (collisionInfo.collider.name == "WallLeft")
+		{
+			leftLimit = true;
 		}
 	}
 
 	void OnCollisionExit(Collision collisionInfo)
 	{
-		rightLimit = false;
+		if (collisionInfo.collider.name == "WallRight")
+		{
+			rightLimit = false;
+		}
+		if (collisionInfo.collider.name == "WallLeft")
+		{
+			leftLimit = false;
+		}
 	}
 
 	void setRadius()
