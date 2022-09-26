@@ -24,6 +24,8 @@ public class player_movement : MonoBehaviour
 
 	bool rightLimit = false;
 	bool leftLimit = false;
+	bool frontLimit = false;
+	bool backLimit = false;
 
 	// Use this for initialization
 	void Start()
@@ -58,6 +60,14 @@ public class player_movement : MonoBehaviour
 			if (leftLimit == true && x < 0)
 			{
 				directionZ = 0;
+			}
+			if (frontLimit == true && y > 0)
+			{
+				directionX = 0;
+			}
+			if (backLimit == true && y < 0)
+			{
+				directionX = 0;
 			}
 			startPos = transform.position;
 			fromRotation = transform.rotation;
@@ -141,6 +151,14 @@ public class player_movement : MonoBehaviour
 		{
 			leftLimit = true;
 		}
+		if (collisionInfo.collider.tag == "WallFront")
+		{
+			frontLimit = true;
+		}
+		if (collisionInfo.collider.tag == "WallBack")
+		{
+			backLimit = true;
+		}
 	}
 
 	void OnCollisionExit(Collision collisionInfo)
@@ -152,6 +170,14 @@ public class player_movement : MonoBehaviour
 		if (collisionInfo.collider.tag == "WallLeft")
 		{
 			leftLimit = false;
+		}
+		if(collisionInfo.collider.tag == "WallFront")
+		{
+			frontLimit = false;
+		}
+		if (collisionInfo.collider.tag == "WallBack")
+		{
+			backLimit = false;
 		}
 	}
 
