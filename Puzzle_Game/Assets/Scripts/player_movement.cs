@@ -27,6 +27,8 @@ public class player_movement : MonoBehaviour
 	bool frontLimit = false;
 	bool backLimit = false;
 
+	int dashStep = 0;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -95,24 +97,28 @@ public class player_movement : MonoBehaviour
 		if (isRotate)
 		{
 
-			if (Input.GetKey("space"))
+			if (Input.GetKey("space") && dashStep < 4)
 			{
 				dash = true;
 				if (Input.GetKey("right") && rightLimit == false)
 				{
 					startPos.z = startPos.z + 1;
+					dashStep++;
 				}
 				if (Input.GetKey("down"))
 				{
 					startPos.x = startPos.x + 1;
+					dashStep++;
 				}
 				if (Input.GetKey("left") && leftLimit == false)
 				{
 					startPos.z = startPos.z - 1;
+					dashStep++;
 				}
 				if (Input.GetKey("up"))
 				{
 					startPos.x = startPos.x - 1;
+					dashStep++;
 				}
 				dash = false;
 			}
@@ -120,6 +126,11 @@ public class player_movement : MonoBehaviour
 			{
 				rotationTime += (Time.fixedDeltaTime / 1.5f);
 			}
+
+			if (Input.GetKey("space") == false)
+            {
+				dashStep = 0;
+            }
 
 			float ratio = Mathf.Lerp(0, 1, rotationTime / rotationPeriod);
 
