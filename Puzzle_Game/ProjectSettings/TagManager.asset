@@ -8,6 +8,7 @@ TagManager:
   - WallLeft
   - WallFront
   - WallBack
+  - Collectable
   layers:
   - Default
   - TransparentFX

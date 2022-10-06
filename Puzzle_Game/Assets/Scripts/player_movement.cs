@@ -141,7 +141,37 @@ public class player_movement : MonoBehaviour
 		}
 	}
 
-	void OnCollisionStay(Collision collisionInfo)
+    void OnCollisionEnter(Collision collisionInfo)
+    {
+        if (collisionInfo.collider.tag == "WallRight")
+        {
+            rightLimit = true;
+        }
+        if (collisionInfo.collider.tag == "WallLeft")
+        {
+            leftLimit = true;
+        }
+        if (collisionInfo.collider.tag == "WallFront")
+        {
+            frontLimit = true;
+        }
+        if (collisionInfo.collider.tag == "WallBack")
+        {
+            backLimit = true;
+        }
+        if (collisionInfo.collider.tag == "Top")
+        {
+            isRotate = false;
+        }
+
+        if (collisionInfo.gameObject.CompareTag("Collectable"))
+        {
+            collisionInfo.gameObject.SetActive(false);
+        }
+
+    }
+
+    void OnCollisionStay(Collision collisionInfo)
 	{
 		if (collisionInfo.collider.tag == "WallRight")
 		{
