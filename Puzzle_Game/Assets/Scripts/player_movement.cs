@@ -104,7 +104,7 @@ public class player_movement : MonoBehaviour
 					startPos.z = startPos.z + 1;
 					dashStep++;
 				}
-				if (Input.GetKey("down"))
+				if (Input.GetKey("down") && backLimit == false)
 				{
 					startPos.x = startPos.x + 1;
 					dashStep++;
@@ -114,7 +114,7 @@ public class player_movement : MonoBehaviour
 					startPos.z = startPos.z - 1;
 					dashStep++;
 				}
-				if (Input.GetKey("up"))
+				if (Input.GetKey("up") && frontLimit == false)
 				{
 					startPos.x = startPos.x - 1;
 					dashStep++;
@@ -125,6 +125,11 @@ public class player_movement : MonoBehaviour
 			{
 				rotationTime += (Time.fixedDeltaTime / 1.5f);
 			}
+
+			if (Input.GetKey("space") == false)
+            {
+				dashStep = 0;
+            }
 
 			float ratio = Mathf.Lerp(0, 1, rotationTime / rotationPeriod);
 
