@@ -118,7 +118,7 @@ public class player_movement : MonoBehaviour
 			}
 			else if (dash == false)
 			{
-				rotationTime += (Time.fixedDeltaTime / 2);
+				rotationTime += (Time.fixedDeltaTime / 1.5f);
 			}
 
 			float ratio = Mathf.Lerp(0, 1, rotationTime / rotationPeriod);
