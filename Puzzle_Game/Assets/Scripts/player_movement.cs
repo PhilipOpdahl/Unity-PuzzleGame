@@ -78,8 +78,11 @@ public class player_movement : MonoBehaviour
 			transform.rotation = fromRotation;
 			setRadius();
 			rotationTime = 0;
-			isRotate = true;
 			dash = false;
+			if (Input.GetKey("space") == false)
+			{
+				isRotate = true;
+			}
 		}
 
 		else
@@ -93,43 +96,45 @@ public class player_movement : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		if (Input.GetKey("space") && dashStep < 4 && !isRotate)
+		{
+			dash = true;
+			startPos = transform.position;
+			if (Input.GetKey("right") && rightLimit == false)
+			{
+				startPos.z = startPos.z + 1;
+				dashStep++;
+			}
+			if (Input.GetKey("down") && backLimit == false)
+			{
+				startPos.x = startPos.x + 1;
+				dashStep++;
+			}
+			if (Input.GetKey("left") && leftLimit == false)
+			{
+				startPos.z = startPos.z - 1;
+				dashStep++;
+			}
+			if (Input.GetKey("up") && frontLimit == false)
+			{
+				startPos.x = startPos.x - 1;
+				dashStep++;
+			}
+			dash = false;
+			transform.position = startPos;
+		}
+
+		if (Input.GetKey("space") == false)
+		{
+			dashStep = 0;
+		}
 
 		if (isRotate)
 		{
-			if (Input.GetKey("space") && dashStep < 4)
-			{
-				dash = true;
-				if (Input.GetKey("right") && rightLimit == false)
-				{
-					startPos.z = startPos.z + 1;
-					dashStep++;
-				}
-				if (Input.GetKey("down") && backLimit == false)
-				{
-					startPos.x = startPos.x + 1;
-					dashStep++;
-				}
-				if (Input.GetKey("left") && leftLimit == false)
-				{
-					startPos.z = startPos.z - 1;
-					dashStep++;
-				}
-				if (Input.GetKey("up") && frontLimit == false)
-				{
-					startPos.x = startPos.x - 1;
-					dashStep++;
-				}
-				dash = false;
-			}
-			else if (dash == false)
-			{
-				rotationTime += (Time.fixedDeltaTime / 1.5f);
-			}
+			rotationTime += (Time.fixedDeltaTime / 1.5f);
+			
 
-			if (Input.GetKey("space") == false)
-            {
-				dashStep = 0;
-            }
+			
 
 			float ratio = Mathf.Lerp(0, 1, rotationTime / rotationPeriod);
 
