@@ -8,6 +8,7 @@ public class player_movement : MonoBehaviour
 	public GameObject Player1;
 	public GameObject Player2;
 	public GameObject Player3;
+	public GameObject Gate;
 
 
 	public float rotationPeriod = 0.3f;
@@ -18,6 +19,9 @@ public class player_movement : MonoBehaviour
 	float directionZ = 0;
 
 	bool dash = false;
+	bool groundLevel = true;
+	bool gate1 = false;
+	bool gate2 = false;
 
 	float startAngleRad = 0;
 	Vector3 startPos;
@@ -41,12 +45,17 @@ public class player_movement : MonoBehaviour
 		Player1.gameObject.SetActive(true);
 		Player2.gameObject.SetActive(false);
 		Player3.gameObject.SetActive(false);
+		Gate.gameObject.SetActive(true);
 
 	}
 
 
 	void Update()
 	{
+		if (gate1 && gate2)
+		{
+			Gate.gameObject.SetActive(false);
+		}
 
 		float x = 0;
 		float y = 0;
@@ -98,6 +107,8 @@ public class player_movement : MonoBehaviour
 			startPos.y = (float)Math.Round((double)startPos.y, 1);
 			startPos.z = (float)Math.Round((double)startPos.z, 1);
 		}
+
+		
 	}
 
 	void FixedUpdate()
@@ -225,6 +236,13 @@ public class player_movement : MonoBehaviour
 		if (collisionInfo.collider.tag == "WallBack")
 		{
 			backLimit = true;
+		}
+
+		if (collisionInfo.gameObject.CompareTag("Gate1"))
+		{
+
+			Gate.gameObject.SetActive(false);
+
 		}
 	}
 
