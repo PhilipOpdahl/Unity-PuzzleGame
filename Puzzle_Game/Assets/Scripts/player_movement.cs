@@ -5,6 +5,10 @@ using System;
 
 public class player_movement : MonoBehaviour
 {
+	public GameObject Player1;
+	public GameObject Player2;
+	public GameObject Player3;
+
 
 	public float rotationPeriod = 0.3f;
 	Vector3 scale;
@@ -34,6 +38,9 @@ public class player_movement : MonoBehaviour
 	{
 
 		scale = transform.lossyScale;
+		Player1.gameObject.SetActive(true);
+		Player2.gameObject.SetActive(false);
+		Player3.gameObject.SetActive(false);
 
 	}
 
@@ -90,7 +97,6 @@ public class player_movement : MonoBehaviour
 			startPos.x = (float)Math.Round((double)startPos.x, 1);
 			startPos.y = (float)Math.Round((double)startPos.y, 1);
 			startPos.z = (float)Math.Round((double)startPos.z, 1);
-			//transform.position = new Vector3(startPos.x, startPos.y, startPos.z);
 		}
 	}
 
@@ -184,7 +190,23 @@ public class player_movement : MonoBehaviour
             collisionInfo.gameObject.SetActive(false);
         }
 
-    }
+		if (collisionInfo.gameObject.CompareTag("Finish"))
+		{
+			Player1.gameObject.SetActive(false);
+			Player2.gameObject.SetActive(true);
+			Player3.gameObject.SetActive(true);
+			collisionInfo.gameObject.SetActive(true);
+		}
+
+		if (collisionInfo.gameObject.CompareTag("Pad2"))
+		{
+			Player1.gameObject.SetActive(true);
+			Player2.gameObject.SetActive(false);
+			Player3.gameObject.SetActive(false);
+			collisionInfo.gameObject.SetActive(true);
+		}
+
+	}
 
     void OnCollisionStay(Collision collisionInfo)
 	{

@@ -9,6 +9,10 @@ TagManager:
   - WallFront
   - WallBack
   - Collectable
+  - Pad1
+  - Pad2
+  - Gate1
+  - Gate2
   layers:
   - Default
   - TransparentFX
