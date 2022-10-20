@@ -9,6 +9,7 @@ public class player_movement : MonoBehaviour
 	public GameObject Player2;
 	public GameObject Player3;
 	public GameObject Gate;
+	public GameObject GateBarrier;
 
 	public Camera firstPersonCamera;
     public Camera overheadCamera;
@@ -60,6 +61,7 @@ public class player_movement : MonoBehaviour
 		if (gate1 && gate2)
 		{
 			Gate.gameObject.SetActive(false);
+			GateBarrier.gameObject.SetActive(false);
 		}
 
 		float x = 0;
@@ -253,6 +255,7 @@ public class player_movement : MonoBehaviour
 		{
 
 			Gate.gameObject.SetActive(false);
+			GateBarrier.gameObject.SetActive(false);
 
 		}
 	}
