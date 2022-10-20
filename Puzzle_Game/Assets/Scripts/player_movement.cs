@@ -55,7 +55,6 @@ public class player_movement : MonoBehaviour
 		Gate.gameObject.SetActive(true);
 		firstPersonCamera.enabled = true;
 		overheadCamera.enabled = false;
-
 	}
 
 
@@ -218,8 +217,7 @@ public class player_movement : MonoBehaviour
 			Player1.gameObject.SetActive(false);
 			Player2.gameObject.SetActive(true);
 			Player3.gameObject.SetActive(true);
-			firstPersonCamera.enabled = false;
-        	overheadCamera.enabled = true;
+			Invoke("Teleport", 0.5f);
 			collisionInfo.gameObject.SetActive(true);
 		}
 
@@ -281,6 +279,11 @@ public class player_movement : MonoBehaviour
 		{
 			backLimit = false;
 		}
+	}
+
+		void Teleport(){
+		firstPersonCamera.enabled = false;
+        overheadCamera.enabled = true;
 	}
 
 	void setRadius()

@@ -27,12 +27,18 @@ public class buttonActivate : MonoBehaviour
         {
             Gate.gameObject.SetActive(false);
             Gatebar.gameObject.SetActive(false);
-            Player.gameObject.SetActive(true);
-            Player2.gameObject.SetActive(false);
-            Player3.gameObject.SetActive(false);
-            firstPersonCamera.enabled = true;
-            overheadCamera.enabled = false;
+            
+            Invoke("Teleport", 1f);
+            
 
         }
+    }
+
+    void Teleport(){
+        firstPersonCamera.enabled = true;
+        overheadCamera.enabled = false;
+        Player.gameObject.SetActive(true);
+        Player2.gameObject.SetActive(false);
+        Player3.gameObject.SetActive(false);
     }
 }
