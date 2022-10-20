@@ -1,7 +1,14 @@
 fileFormatVersion: 2
 guid: 8562a0719f20f704ab6cf874e75bb89c
-SubstanceImporter:
+ScriptedImporter:
+  internalIDToNameTable: []
   externalObjects: {}
+  serializedVersion: 2
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: cf6853cc80f11524aab5d6cb3bc24a87, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/Materials/metal_tile_01_2k.sbsar
