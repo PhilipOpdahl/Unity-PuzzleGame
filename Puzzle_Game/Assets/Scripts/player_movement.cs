@@ -49,6 +49,8 @@ public class player_movement : MonoBehaviour
 		Player2.gameObject.SetActive(false);
 		Player3.gameObject.SetActive(false);
 		Gate.gameObject.SetActive(true);
+		firstPersonCamera.enabled = true;
+		overheadCamera.enabled = false;
 
 	}
 
