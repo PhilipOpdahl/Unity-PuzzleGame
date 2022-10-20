@@ -11,6 +11,9 @@ public class player_movement : MonoBehaviour
 	public GameObject Gate;
 	public GameObject GateBarrier;
 
+	public GameObject Button1;
+	public GameObject Button2;
+
 	public Camera firstPersonCamera;
     public Camera overheadCamera;
 
@@ -58,11 +61,11 @@ public class player_movement : MonoBehaviour
 
 	void Update()
 	{
-		if (gate1 && gate2)
+		/*if (gate1 && gate2)
 		{
 			Gate.gameObject.SetActive(false);
 			GateBarrier.gameObject.SetActive(false);
-		}
+		}*/
 
 		float x = 0;
 		float y = 0;
@@ -215,9 +218,9 @@ public class player_movement : MonoBehaviour
 			Player1.gameObject.SetActive(false);
 			Player2.gameObject.SetActive(true);
 			Player3.gameObject.SetActive(true);
-			collisionInfo.gameObject.SetActive(true);
 			firstPersonCamera.enabled = false;
         	overheadCamera.enabled = true;
+			collisionInfo.gameObject.SetActive(true);
 		}
 
 		if (collisionInfo.gameObject.CompareTag("Pad2"))
@@ -225,9 +228,9 @@ public class player_movement : MonoBehaviour
 			Player1.gameObject.SetActive(true);
 			Player2.gameObject.SetActive(false);
 			Player3.gameObject.SetActive(false);
-			collisionInfo.gameObject.SetActive(true);
 			firstPersonCamera.enabled = true;
         	overheadCamera.enabled = false;
+			collisionInfo.gameObject.SetActive(true);
 		}
 
 	}
@@ -251,13 +254,13 @@ public class player_movement : MonoBehaviour
 			backLimit = true;
 		}
 
-		if (collisionInfo.gameObject.CompareTag("Gate1"))
+		/*if (collisionInfo.gameObject.CompareTag("Gate1"))
 		{
 
 			Gate.gameObject.SetActive(false);
 			GateBarrier.gameObject.SetActive(false);
 
-		}
+		}*/
 	}
 
 	void OnCollisionExit(Collision collisionInfo)
