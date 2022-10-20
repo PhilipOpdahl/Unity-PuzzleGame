@@ -10,6 +10,9 @@ public class player_movement : MonoBehaviour
 	public GameObject Player3;
 	public GameObject Gate;
 
+	public Camera firstPersonCamera;
+    public Camera overheadCamera;
+
 
 	public float rotationPeriod = 0.3f;
 	Vector3 scale;
@@ -111,6 +114,8 @@ public class player_movement : MonoBehaviour
 		
 	}
 
+	
+
 	void FixedUpdate()
 	{
 		if (Input.GetKey("space") && dashStep < 4 && !isRotate)
@@ -207,6 +212,8 @@ public class player_movement : MonoBehaviour
 			Player2.gameObject.SetActive(true);
 			Player3.gameObject.SetActive(true);
 			collisionInfo.gameObject.SetActive(true);
+			firstPersonCamera.enabled = false;
+        	overheadCamera.enabled = true;
 		}
 
 		if (collisionInfo.gameObject.CompareTag("Pad2"))
@@ -215,6 +222,8 @@ public class player_movement : MonoBehaviour
 			Player2.gameObject.SetActive(false);
 			Player3.gameObject.SetActive(false);
 			collisionInfo.gameObject.SetActive(true);
+			firstPersonCamera.enabled = true;
+        	overheadCamera.enabled = false;
 		}
 
 	}
