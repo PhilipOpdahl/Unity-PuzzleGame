@@ -217,7 +217,8 @@ public class player_movement : MonoBehaviour
 			Player1.gameObject.SetActive(false);
 			Player2.gameObject.SetActive(true);
 			Player3.gameObject.SetActive(true);
-			Invoke("Teleport", 0.5f);
+			firstPersonCamera.enabled = false;
+        	overheadCamera.enabled = true;
 			collisionInfo.gameObject.SetActive(true);
 		}
 
@@ -281,10 +282,6 @@ public class player_movement : MonoBehaviour
 		}
 	}
 
-		void Teleport(){
-		firstPersonCamera.enabled = false;
-        overheadCamera.enabled = true;
-	}
 
 	void setRadius()
 	{

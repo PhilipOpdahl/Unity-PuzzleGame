@@ -13,6 +13,8 @@ TagManager:
   - Pad2
   - Gate1
   - Gate2
+  - Goal
+  - Elevator
   layers:
   - Default
   - TransparentFX
