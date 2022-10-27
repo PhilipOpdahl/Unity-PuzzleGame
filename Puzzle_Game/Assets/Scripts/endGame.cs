@@ -5,12 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class endGame : MonoBehaviour
 {
-   void OnCollisionEnter(Collision collisionInfo)
+   void OnTriggerEnter(Collider collisionInfo)
     {
-        if (collisionInfo.collider.tag == "Player")
+        if (collisionInfo.GetComponent<Collider>().tag == "Player")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Invoke("YouWin", 0.5f);
         }
        
 	}
+
+    void YouWin(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }

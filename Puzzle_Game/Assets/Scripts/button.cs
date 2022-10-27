@@ -27,7 +27,7 @@ public class button : MonoBehaviour
         }
     }
 
-	void OnCollisionEnter(Collision collisionInfo)
+	void OnTriggerEnter(Collider collisionInfo)
 	{
         if (collisionInfo.gameObject.name == "2")
         {
@@ -42,7 +42,7 @@ public class button : MonoBehaviour
         }
     }
 
-    void OnCollisionExit(Collision collisionInfo)
+    void OnTriggerExit(Collider collisionInfo)
     {
         if (collisionInfo.gameObject.name == "2")
         {

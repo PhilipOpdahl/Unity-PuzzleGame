@@ -17,6 +17,8 @@ public class player_movement : MonoBehaviour
 	public Camera firstPersonCamera;
     public Camera overheadCamera;
 
+	public Platform_Attach script;
+
 
 	public float rotationPeriod = 0.3f;
 	Vector3 scale;
@@ -44,6 +46,9 @@ public class player_movement : MonoBehaviour
 
 	int dashStep = 0;
 
+	public bool parented = false;
+	public Platform_Attach Parented;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -60,11 +65,10 @@ public class player_movement : MonoBehaviour
 
 	void Update()
 	{
-		/*if (gate1 && gate2)
-		{
-			Gate.gameObject.SetActive(false);
-			GateBarrier.gameObject.SetActive(false);
-		}*/
+		// Midlertidig if-statement som fjerner parenting til heis. Kan forhåpentligvis fjernes etterhvert.
+		if (transform.position.y > 5.49f){
+			parented = false;
+		}
 
 		float x = 0;
 		float y = 0;
@@ -95,6 +99,7 @@ public class player_movement : MonoBehaviour
 			if (backLimit == true && y < 0)
 			{
 				directionX = 0;
+
 			}
 			startPos = transform.position;
 			fromRotation = transform.rotation;
@@ -104,7 +109,7 @@ public class player_movement : MonoBehaviour
 			setRadius();
 			rotationTime = 0;
 			dash = false;
-			if (Input.GetKey("space") == false)
+			if (Input.GetKey("space") == false && !parented)
 			{
 				isRotate = true;
 			}
@@ -116,6 +121,8 @@ public class player_movement : MonoBehaviour
 			startPos.y = (float)Math.Round((double)startPos.y, 1);
 			startPos.z = (float)Math.Round((double)startPos.z, 1);
 		}
+
+		//Debug.Log(parented);
 
 		
 	}
@@ -184,25 +191,25 @@ public class player_movement : MonoBehaviour
 		}
 	}
 
-    void OnCollisionEnter(Collision collisionInfo)
+    void OnTriggerEnter(Collider collisionInfo)
     {
-        if (collisionInfo.collider.tag == "WallRight")
-        {
-            rightLimit = true;
-        }
-        if (collisionInfo.collider.tag == "WallLeft")
+        if (collisionInfo.GetComponent<Collider>().tag == "WallRight")
+		{
+			rightLimit = true;
+		}
+        if (collisionInfo.GetComponent<Collider>().tag == "WallLeft")
         {
             leftLimit = true;
         }
-        if (collisionInfo.collider.tag == "WallFront")
+        if (collisionInfo.GetComponent<Collider>().tag == "WallFront")
         {
             frontLimit = true;
         }
-        if (collisionInfo.collider.tag == "WallBack")
+        if (collisionInfo.GetComponent<Collider>().tag == "WallBack")
         {
             backLimit = true;
         }
-        if (collisionInfo.collider.tag == "Top")
+        if (collisionInfo.GetComponent<Collider>().tag == "Top")
         {
             isRotate = false;
         }
@@ -234,21 +241,23 @@ public class player_movement : MonoBehaviour
 
 	}
 
-    void OnCollisionStay(Collision collisionInfo)
+    void OnTriggerStay(Collider collisionInfo)
 	{
-		if (collisionInfo.collider.tag == "WallRight")
+		
+
+		if (collisionInfo.GetComponent<Collider>().tag == "WallRight")
 		{
 			rightLimit = true;
 		}
-		if (collisionInfo.collider.tag == "WallLeft")
+		if (collisionInfo.GetComponent<Collider>().tag == "WallLeft")
 		{
 			leftLimit = true;
 		}
-		if (collisionInfo.collider.tag == "WallFront")
+		if (collisionInfo.GetComponent<Collider>().tag == "WallFront")
 		{
 			frontLimit = true;
 		}
-		if (collisionInfo.collider.tag == "WallBack")
+		if (collisionInfo.GetComponent<Collider>().tag == "WallBack")
 		{
 			backLimit = true;
 		}
@@ -262,21 +271,21 @@ public class player_movement : MonoBehaviour
 		}*/
 	}
 
-	void OnCollisionExit(Collision collisionInfo)
+	void OnTriggerExit(Collider collisionInfo)
 	{
-		if (collisionInfo.collider.tag == "WallRight")
+		if (collisionInfo.GetComponent<Collider>().tag == "WallRight")
 		{
 			rightLimit = false;
 		}
-		if (collisionInfo.collider.tag == "WallLeft")
+		if (collisionInfo.GetComponent<Collider>().tag == "WallLeft")
 		{
 			leftLimit = false;
 		}
-		if(collisionInfo.collider.tag == "WallFront")
+		if(collisionInfo.GetComponent<Collider>().tag == "WallFront")
 		{
 			frontLimit = false;
 		}
-		if (collisionInfo.collider.tag == "WallBack")
+		if (collisionInfo.GetComponent<Collider>().tag == "WallBack")
 		{
 			backLimit = false;
 		}
