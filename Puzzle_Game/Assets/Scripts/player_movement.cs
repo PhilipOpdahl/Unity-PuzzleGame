@@ -42,12 +42,13 @@ public class player_movement : MonoBehaviour
 	bool frontLimit = false;
 	bool backLimit = false;
 
+	AudioSource source;
+
 	int dashStep = 0;
 
 	// Use this for initialization
 	void Start()
 	{
-
 		scale = transform.lossyScale;
 		Player1.gameObject.SetActive(true);
 		Player2.gameObject.SetActive(false);
@@ -55,6 +56,10 @@ public class player_movement : MonoBehaviour
 		Gate.gameObject.SetActive(true);
 		firstPersonCamera.enabled = true;
 		overheadCamera.enabled = false;
+	}
+
+	void Awake(){
+		source = GetComponent<AudioSource>(); 
 	}
 
 
@@ -124,7 +129,7 @@ public class player_movement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if (Input.GetKey("space") && dashStep < 4 && !isRotate)
+		if (Input.GetKey("space") && dashStep < 5 && !isRotate)
 		{
 			dash = true;
 			startPos = transform.position;
@@ -210,6 +215,7 @@ public class player_movement : MonoBehaviour
         if (collisionInfo.gameObject.CompareTag("Collectable"))
         {
             collisionInfo.gameObject.SetActive(false);
+			source.Play();
         }
 
 		if (collisionInfo.gameObject.CompareTag("Finish"))

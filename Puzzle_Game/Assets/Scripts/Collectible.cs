@@ -5,9 +5,14 @@ public class Collectible : MonoBehaviour
 {
     public static event Action OnCollected;
     public static int total; 
+    AudioSource source;
 
-    void Awake() => total++;
 
+    void Awake()
+    {
+       source = GetComponent<AudioSource>(); 
+       total++;
+    }
     void Update()
     {
         transform.Rotate(new Vector3 (0f, 1f, 0f));
@@ -18,7 +23,11 @@ public class Collectible : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             OnCollected?.Invoke();
+            source.Play();
             Destroy(gameObject);
+            
+
+            
         }
     }
 }

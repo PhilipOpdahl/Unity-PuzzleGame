@@ -9,8 +9,12 @@ public class endGame : MonoBehaviour
     {
         if (collisionInfo.collider.tag == "Player")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Invoke("YouWin", 0.5f);
         }
        
 	}
+
+    void YouWin(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
