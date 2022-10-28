@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ef443ca41d58fd443a4c3d02f9ac7c21
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: 2d6dcb8b8c8031d41b77e517a92a1290, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/Materials/rubik-s_cube_41_90.sbsar
