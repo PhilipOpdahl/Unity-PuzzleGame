@@ -10,6 +10,7 @@ public class player_movement : MonoBehaviour
 	public GameObject Player3;
 	public GameObject Gate;
 	public GameObject GateBarrier;
+	public GameObject MovingPlatformCollider;
 
 	public GameObject Button1;
 	public GameObject Button2;
@@ -209,6 +210,10 @@ public class player_movement : MonoBehaviour
         {
             backLimit = true;
         }
+		if (collisionInfo.gameObject == MovingPlatformCollider)
+        {
+            parented = true;
+        }
         if (collisionInfo.GetComponent<Collider>().tag == "Top")
         {
             isRotate = false;
@@ -289,6 +294,10 @@ public class player_movement : MonoBehaviour
 		{
 			backLimit = false;
 		}
+		if (collisionInfo.gameObject == MovingPlatformCollider)
+        {
+            parented = false;
+        }
 	}
 
 
