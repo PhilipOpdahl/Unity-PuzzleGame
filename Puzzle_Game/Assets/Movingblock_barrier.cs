@@ -9,6 +9,8 @@ public class Movingblock_barrier : MonoBehaviour
     public GameObject Front;
     public GameObject Back;
     public GameObject Platform_Col;
+    public GameObject DoorRight;
+    public GameObject DoorLeft;
 
     private int updatedRight = 1;
     private int updatedLeft = 1;
@@ -28,6 +30,7 @@ public class Movingblock_barrier : MonoBehaviour
             Front.gameObject.transform.position += temp;
             Back.gameObject.transform.position += temp;
             Platform_Col.gameObject.transform.position += temp;
+            DoorRight.gameObject.transform.position += temp;
             Invoke("BuildRightWall", 1f);
             updatedRight = 0;
 
@@ -38,6 +41,7 @@ public class Movingblock_barrier : MonoBehaviour
             Front.gameObject.transform.position += temp;
             Back.gameObject.transform.position += temp;
             Platform_Col.gameObject.transform.position += temp;
+            DoorLeft.gameObject.transform.position += temp;
             Invoke("BuildLeftWall", 1f);
             updatedLeft = 0;
 
@@ -50,6 +54,7 @@ public class Movingblock_barrier : MonoBehaviour
         Front.gameObject.transform.position -= temp;
         Back.gameObject.transform.position -= temp;
         Platform_Col.gameObject.transform.position -= temp;
+        DoorRight.gameObject.transform.position -= temp;
         updatedRight = 1;
     }
 
@@ -59,6 +64,7 @@ public class Movingblock_barrier : MonoBehaviour
         Front.gameObject.transform.position -= temp;
         Back.gameObject.transform.position -= temp;
         Platform_Col.gameObject.transform.position -= temp;
+        DoorLeft.gameObject.transform.position -= temp;
         updatedLeft = 1;
     }
 }
