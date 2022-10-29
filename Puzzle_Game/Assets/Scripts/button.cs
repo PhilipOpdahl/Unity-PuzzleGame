@@ -10,6 +10,7 @@ public class button : MonoBehaviour
     public GameObject PlayerLeft;
     public GameObject Gate;
     public buttonActivate keylock;
+    public AudioClip collectibleSound;
 
     public buttonActivate script;
     // Start is called before the first frame update
@@ -31,12 +32,14 @@ public class button : MonoBehaviour
 	{
         if (collisionInfo.gameObject.name == "2")
         {
+            AudioSource.PlayClipAtPoint(collectibleSound, transform.position,2f);
             IsRightPushed = true;
             keylock.KeyLock++;
 
         }
         if (collisionInfo.gameObject.name == "3")
         {
+            AudioSource.PlayClipAtPoint(collectibleSound, transform.position,2f);
             IsLeftPushed = true;
             keylock.KeyLock++;
         }

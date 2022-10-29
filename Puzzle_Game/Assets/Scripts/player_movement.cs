@@ -20,6 +20,7 @@ public class player_movement : MonoBehaviour
 
 	public Platform_Attach script;
 
+	AudioSource audioSrc;
 
 	public float rotationPeriod = 0.3f;
 	Vector3 scale;
@@ -61,6 +62,7 @@ public class player_movement : MonoBehaviour
 		Gate.gameObject.SetActive(true);
 		firstPersonCamera.enabled = true;
 		overheadCamera.enabled = false;
+		audioSrc = GetComponent<AudioSource> ();
 	}
 
 
@@ -80,9 +82,17 @@ public class player_movement : MonoBehaviour
 			y = Input.GetAxisRaw("Vertical");
 		}
 
+		if (isRotate) {
+			if (!audioSrc.isPlaying)
+			audioSrc.Play ();
+		}
+		else {
+			audioSrc.Stop ();
+		}
+
 
 		if ((x != 0 || y != 0) && !isRotate)
-		{
+		{	
 			directionX = y;
 			directionZ = x;
 			if (rightLimit == true && x > 0)

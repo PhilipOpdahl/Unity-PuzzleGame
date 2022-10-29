@@ -5,6 +5,7 @@ public class Collectible : MonoBehaviour
 {
     public static event Action OnCollected;
     public static int total; 
+    public AudioClip collectibleSound;
 
     void Awake() => total++;
 
@@ -17,6 +18,7 @@ public class Collectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioSource.PlayClipAtPoint(collectibleSound, transform.position,0.5f);
             OnCollected?.Invoke();
             Destroy(gameObject);
         }
