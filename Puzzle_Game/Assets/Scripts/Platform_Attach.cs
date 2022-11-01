@@ -20,6 +20,11 @@ public class Platform_Attach : MonoBehaviour{
             Player.transform.parent = null;
             Parented.parented = false;
         }
+
+        /*if(other.gameObject.CompareTag("RightZone") || other.gameObject.CompareTag("LeftZone")){
+            Parented.parented = false;
+            Player.transform.parent = null;
+        }*/
     }
 
     void Update(){

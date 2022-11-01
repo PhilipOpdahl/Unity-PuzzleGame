@@ -69,7 +69,7 @@ public class player_movement : MonoBehaviour
 	void Update()
 	{
 		// Midlertidig if-statement som fjerner parenting til heis. Kan forhåpentligvis fjernes etterhvert.
-		if (transform.position.y > 5.49f){
+		if (transform.position.y > 5.499999f){//|| transform.position.y > 1.5000001f){
 			parented = false;
 		}
 

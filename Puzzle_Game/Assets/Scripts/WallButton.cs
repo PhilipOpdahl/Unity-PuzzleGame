@@ -24,7 +24,7 @@ void ResetWall() {
    private void OnTriggerExit(Collider other) {
     if (other.CompareTag("Player")) {
         myAnimationController.SetBool("WallDown", false);
-        Invoke("ResetWall", 2f);
+        Invoke("ResetWall", 0.5f);
     }
    }
    

@@ -12,6 +12,9 @@ public class buttonActivate : MonoBehaviour
     public GameObject Player3;
     public Camera firstPersonCamera;
     public Camera overheadCamera;
+    //public GameObject ForceFieldSFX;
+
+    public GameObject Trigger;
 
     public button script;
     // Start is called before the first frame update
@@ -27,6 +30,8 @@ public class buttonActivate : MonoBehaviour
         {
             Gate.gameObject.SetActive(false);
             Gatebar.gameObject.SetActive(false);
+            Trigger.gameObject.SetActive(false);
+            //ForceFieldSFX.gameObject.SetActive(false);
             
             Invoke("Teleport", 1f);
             

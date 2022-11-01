@@ -14,13 +14,13 @@ public class SoundTriggerOnEnter : MonoBehaviour
        soundTrigger = GetComponent<Collider>();
     }
 
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider other)
     {
-        if (collider.gameObject.tag == "Player") {
+        if (other.gameObject.tag == "Player") {
             source.Play();
         }
     }
-        void OnTriggerExit(Collider collider)
+    void OnTriggerExit(Collider other)
     {
         AudioSource source = GetComponent<AudioSource>();
         source.Stop();
