@@ -69,9 +69,9 @@ public class player_movement : MonoBehaviour
 	void Update()
 	{
 		// Midlertidig if-statement som fjerner parenting til heis. Kan forhåpentligvis fjernes etterhvert.
-		if (transform.position.y > 5.499999f){//|| transform.position.y > 1.5000001f){
+		/*if (transform.position.y > 5.499999f){//|| transform.position.y > 1.5000001f){
 			parented = false;
-		}
+		}*/
 
 		float x = 0;
 		float y = 0;
@@ -229,6 +229,16 @@ public class player_movement : MonoBehaviour
             isRotate = false;
         }
 
+		if (collisionInfo.GetComponent<Collider>().name == "Elevator_floor")
+        {
+            parented = true;
+        }
+
+		if (collisionInfo.GetComponent<Collider>().name == "Elevator_ceiling")
+        {
+            parented = true;
+        }
+
         if (collisionInfo.gameObject.CompareTag("Collectable"))
         {
             collisionInfo.gameObject.SetActive(false);
@@ -277,6 +287,16 @@ public class player_movement : MonoBehaviour
 			backLimit = true;
 		}
 
+		if (collisionInfo.GetComponent<Collider>().name == "Elevator_ceiling")
+        {
+            parented = true;
+        }
+
+		if (collisionInfo.GetComponent<Collider>().name == "Elevator_floor")
+        {
+            parented = true;
+        }
+
 		/*if (collisionInfo.gameObject.CompareTag("Gate1"))
 		{
 
@@ -305,6 +325,16 @@ public class player_movement : MonoBehaviour
 			backLimit = false;
 		}
 		if (collisionInfo.gameObject == MovingPlatformCollider)
+        {
+            parented = false;
+        }
+
+		if (collisionInfo.GetComponent<Collider>().name == "Elevator_ceiling")
+        {
+            parented = false;
+        }
+
+		if (collisionInfo.GetComponent<Collider>().name == "Elevator_floor")
         {
             parented = false;
         }

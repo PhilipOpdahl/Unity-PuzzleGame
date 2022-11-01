@@ -23,7 +23,7 @@ public class elevatorbarrier : MonoBehaviour
     void Update()
     {
         if (transform.position.y < 0.95f && updatedLow == 1){
-            GroundWall.transform.position += temp;
+            Invoke("RemoveLowWall", 0.2f);
             updatedLow = 0;
             updatedHigh = 1;
             Invoke("BuildLowWall", 2f);
@@ -39,11 +39,16 @@ public class elevatorbarrier : MonoBehaviour
 
     void BuildLowWall()
     {
-        GroundWall.transform.position -= temp;
+        GroundWall.transform.position -= 5*tempSide;
     }
 
     void BuildHighWall()
     {
         TopWall.transform.position -= tempSide;
+    }
+
+    void RemoveLowWall()
+    {
+        GroundWall.transform.position += 5*tempSide;
     }
 }
