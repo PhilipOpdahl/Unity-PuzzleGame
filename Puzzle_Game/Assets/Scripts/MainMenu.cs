@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,8 +16,8 @@ public void QuitGame() {
 }
 
 }
+*/
 
-/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +28,22 @@ public class MainMenu : MonoBehaviour {
     public Animator transition;
 
     public float transitionTime = 1f;
-  
+
+public void LoadNextLevel() {
+    //StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1)) ; 
+    Debug.Log("yo");
+}
+
+IEnumerator LoadLevel(int levelIndex) {
+    transition.SetTrigger("Start");
+
+    yield return new WaitForSeconds(transitionTime);
+
+    SceneManager.LoadScene(levelIndex);
+}
+
+/*  
 public void PlayGame() {
 
     StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
@@ -40,7 +55,7 @@ public void PlayGame() {
     SceneManager.LoadScene(levelIndex);
 }
 }
-
+*/
 
 
 public void QuitGame() {
@@ -52,4 +67,3 @@ public void QuitGame() {
 
 
 
-*/

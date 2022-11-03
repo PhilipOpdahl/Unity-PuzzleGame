@@ -143,7 +143,11 @@ MonoBehaviour:
   EnablePhysicalSize: 0
   Thumbnail: 
   HasThumbnail: 0
-  CurrentStatePreset: 
+  CurrentStatePreset: " <sbspreset pkgurl=\"pkg://Scratches01\" label=\"\" >\n  <presetinput
+    identifier=\"$outputsize\" uid=\"1479095099\" type=\"8\" value=\"10,10\" />\n 
+    <presetinput identifier=\"Patches_Strength_Fine\" uid=\"750076494\" type=\"0\"
+    value=\"0.383\" />\n  <presetinput identifier=\"Scratches_Count_Medium\" uid=\"749874228\"
+    type=\"4\" value=\"299\" />\n </sbspreset>\n"
   IsRuntimeOnly: 0
   GenerateAllOutputs: 0
   GenerateAllMipmaps: 1
@@ -268,7 +272,7 @@ MonoBehaviour:
           GuiDescription: Strength/Scale of the fine patches
           Type: 0
           WidgetType: 1
-        Data: 0.33
+        Data: 0.383
         NumericalDescription:
           DefaultValue: 0.33
           MinValue: 0
@@ -350,7 +354,7 @@ MonoBehaviour:
           GuiDescription: Number of medium sized scratches
           Type: 4
           WidgetType: 1
-        Data: 256
+        Data: 299
         NumericalDescription:
           DefaultValue: 256
           MinValue: 1
