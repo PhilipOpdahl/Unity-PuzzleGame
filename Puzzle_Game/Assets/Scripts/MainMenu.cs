@@ -27,7 +27,11 @@ public class MainMenu : MonoBehaviour {
 
     public Animator transition;
 
-    public float transitionTime = 1f;
+    public float transitionTime = 0f;
+
+public void PlayGame() {
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1) ;
+}
 
 public void LoadNextLevel() {
     //StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));

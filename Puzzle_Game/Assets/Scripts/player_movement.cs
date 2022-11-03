@@ -51,6 +51,8 @@ public class player_movement : MonoBehaviour
 	public bool parented = false;
 	public Platform_Attach Parented;
 
+	[SerializeField] private Animator myAnimationController;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -246,12 +248,11 @@ public class player_movement : MonoBehaviour
 
 		if (collisionInfo.gameObject.CompareTag("Finish"))
 		{
-			Player1.gameObject.SetActive(false);
-			Player2.gameObject.SetActive(true);
-			Player3.gameObject.SetActive(true);
-			firstPersonCamera.enabled = false;
-        	overheadCamera.enabled = true;
-			collisionInfo.gameObject.SetActive(true);
+			//collisionInfo.gameObject.SetActive(true);
+			myAnimationController.SetBool("Start_dissolve", true);
+			myAnimationController.SetBool("End_dissolve", false);
+			myAnimationController.SetBool("Static", false);
+			Invoke("Dissolve", 1f);
 		}
 
 		if (collisionInfo.gameObject.CompareTag("Pad2"))
@@ -265,6 +266,17 @@ public class player_movement : MonoBehaviour
 		}
 
 	}
+	void Dissolve() {
+		myAnimationController.SetBool("Start_dissolve", false);
+			myAnimationController.SetBool("Static", true);
+			//myAnimationController.SetBool("End_dissolve", true);
+			Player1.gameObject.SetActive(false);
+			Player2.gameObject.SetActive(true);
+			Player3.gameObject.SetActive(true);
+			firstPersonCamera.enabled = false;
+        	overheadCamera.enabled = true;
+			
+    }
 
     void OnTriggerStay(Collider collisionInfo)
 	{

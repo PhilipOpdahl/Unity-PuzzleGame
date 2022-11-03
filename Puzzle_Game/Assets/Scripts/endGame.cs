@@ -5,14 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class endGame : MonoBehaviour
 {
-   void OnTriggerEnter(Collider collisionInfo)
+
+    [SerializeField] private Animator myAnimationController;
+
+    void OnTriggerEnter(Collider collisionInfo)
     {
         if (collisionInfo.GetComponent<Collider>().tag == "Player")
         {
-            Invoke("YouWin", 0.5f);
+        myAnimationController.SetBool("Start_dissolve", true);
+        myAnimationController.SetBool("End_dissolve", false);
+        myAnimationController.SetBool("Static", false);
+    }
+            Invoke("YouWin", 1.5f);
         }
-       
-	}
 
     void YouWin(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
