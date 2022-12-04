@@ -12,4 +12,12 @@ public class YouWin : MonoBehaviour
    public void MainMenu() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2) ;
 }
+
+   public void Levels() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3) ;
+}
+
+   public void NextLevel() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 4) ;
+}
 }

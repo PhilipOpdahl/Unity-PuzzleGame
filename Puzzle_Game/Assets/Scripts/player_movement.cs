@@ -8,6 +8,7 @@ public class player_movement : MonoBehaviour
 	public GameObject Player1;
 	public GameObject Player2;
 	public GameObject Player3;
+	public GameObject Player4;
 	public GameObject Gate;
 	public GameObject GateBarrier;
 	public GameObject MovingPlatformCollider;
@@ -61,6 +62,7 @@ public class player_movement : MonoBehaviour
 		Player1.gameObject.SetActive(true);
 		Player2.gameObject.SetActive(false);
 		Player3.gameObject.SetActive(false);
+		Player4.gameObject.SetActive(false);
 		Gate.gameObject.SetActive(true);
 		firstPersonCamera.enabled = true;
 		overheadCamera.enabled = false;
@@ -260,6 +262,7 @@ public class player_movement : MonoBehaviour
 			Player1.gameObject.SetActive(true);
 			Player2.gameObject.SetActive(false);
 			Player3.gameObject.SetActive(false);
+			Player4.gameObject.SetActive(false);
 			firstPersonCamera.enabled = true;
         	overheadCamera.enabled = false;
 			collisionInfo.gameObject.SetActive(true);
@@ -273,6 +276,7 @@ public class player_movement : MonoBehaviour
 			Player1.gameObject.SetActive(false);
 			Player2.gameObject.SetActive(true);
 			Player3.gameObject.SetActive(true);
+			Player4.gameObject.SetActive(true);
 			firstPersonCamera.enabled = false;
         	overheadCamera.enabled = true;
 			
