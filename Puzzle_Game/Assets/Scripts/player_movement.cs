@@ -15,6 +15,7 @@ public class player_movement : MonoBehaviour
 
 	public GameObject Button1;
 	public GameObject Button2;
+	public GameObject Button3;
 
 	public Camera firstPersonCamera;
     public Camera overheadCamera;

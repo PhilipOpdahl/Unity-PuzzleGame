@@ -14,10 +14,10 @@ public class YouWin : MonoBehaviour
 }
 
    public void Levels() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3) ;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2) ;
 }
 
    public void NextLevel() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 4) ;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3) ;
 }
 }
