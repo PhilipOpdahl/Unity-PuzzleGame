@@ -255,7 +255,7 @@ public class player_movement : MonoBehaviour
 			myAnimationController.SetBool("Start_dissolve", true);
 			myAnimationController.SetBool("End_dissolve", false);
 			myAnimationController.SetBool("Static", false);
-			Invoke("Dissolve", 1f);
+			Invoke("Dissolve", 0f);
 		}
 
 		if (collisionInfo.gameObject.CompareTag("Pad2"))
